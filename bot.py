@@ -6,7 +6,7 @@ import random
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 # Замени 'TOKEN' на токен твоего бота
 # Этот токен ты получаешь от BotFather, чтобы бот мог работать
-bot = telebot.TeleBot("8461369075:AAEEViNX0yUK4wkkQmFkvVQhJLbOvycu5yI")
+bot = telebot.TeleBot("")
 # Замени 'TOKEN' на токен твоего бота
 
 

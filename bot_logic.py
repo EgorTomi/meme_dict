@@ -24,3 +24,6 @@ def random_number_Game():
 def random_number():
     return random.randint(1, 10)
 
+def True_Or_False():
+    return random.randint(0, 6)
+

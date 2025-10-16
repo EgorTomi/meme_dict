@@ -99,6 +99,36 @@ def handle_poll(poll):
     # This handler can be used to log User answers and to send next poll
     pass
         
+@bot.message_handler(commands=['mem'])
+def send_mem(message):
+    files_Meme = 'images'
+    all_meme = os.listdir(files_Meme)
+    random_meme = random.choice(all_meme)  
+    with open(f'images/{random_meme}', 'rb') as f:  
+        bot.send_photo(message.chat.id, f)  
 
+def get_duck_image_url():    
+        url = 'https://random-d.uk/api/random'
+        res = requests.get(url)
+        data = res.json()
+        return data['url']
+    
+    
+@bot.message_handler(commands=['duck'])
+def duck(message):
+    '''По команде duck вызывает функцию get_duck_image_url и отправляет URL изображения утки'''
+    image_url = get_duck_image_url()
+    bot.reply_to(message, image_url)
+
+@bot.message_handler(commands=['Mem_Animals'])
+def mem_animals(message):
+    Animals_Meme_files = 'Mem_Animals'
+    Animals = os.listdir(Animals_Meme_files)
+    Rarity = [10, 65, 30, 5]  
+    Choise_itom = random.choices(Animals, weights=Rarity, k=1)
+    chosen_filename = Choise_itom[0]
+    full_path = os.path.join(Animals_Meme_files, chosen_filename)
+    with open(full_path, 'rb') as f:
+        bot.send_photo(message.chat.id, f)
 
 bot.infinity_polling()
